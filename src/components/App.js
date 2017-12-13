@@ -2,6 +2,7 @@ import React from 'react';
 import DevForm from './DevForm';
 import DevList from './devList';
 import sampleDevs from '../sample-dev'
+import base from '../base'
 
 
 class App extends React.Component {
@@ -26,6 +27,8 @@ class App extends React.Component {
   addDev(dev) {
     const devs = this.state.devs
     devs.push(dev)
+    const itemsRef = base.database().ref('devs');
+    itemsRef.push(dev);
     this.setState({ devs })
   }
   removeDev(id){
