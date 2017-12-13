@@ -1,4 +1,5 @@
 import React from 'react';
+const uuidv4 = require('uuid/v4');
 
 class DevForm extends React.Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class DevForm extends React.Component {
         e.preventDefault();
         console.log('Gonna a create somme dev')
        const dev ={
+           id:uuidv4(),
            name:_name.value,
            desc:_desc.value,
            image:_photo.value,
@@ -20,7 +22,7 @@ class DevForm extends React.Component {
        }
       
        this.props.addDev(dev)
-       this._devform.reset()
+       _devform.reset()
     }
     render() {
         return (

@@ -28,6 +28,7 @@ class App extends React.Component {
     const devs = this.state.devs
     devs.push(dev)
     const itemsRef = base.database().ref('devs');
+    console.log("connected to the database")
     itemsRef.push(dev);
     this.setState({ devs })
   }
