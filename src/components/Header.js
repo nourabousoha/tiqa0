@@ -8,7 +8,7 @@ class Header extends React.Component {
             <nav className="navbar navbar-inverse">
                 <div className="container-fluid">
                     <div className="navbar-header">
-                        <a className="navbar-brand" href="#">TIQA shared <i className="fa fa-handshake-o" aria-hidden="true"></i>confidence</a>
+                        <a className="navbar-brand" href="#">TIQA shared <i className="fa fa-handshake-o" aria-hidden="true" style={{color:'green'}}></i>confidence</a>
                     </div>
                     <ul className="nav navbar-nav">
                         <li className="active"><a href="#">Home</a></li>
