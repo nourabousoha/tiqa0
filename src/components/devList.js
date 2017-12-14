@@ -36,7 +36,7 @@ class DevList extends React.Component {
     
 
     componentWillMount(){
-        this.props.loadSamples() ;
+       // this.props.loadSamples() ;
     }
     render() {
         //console.log("starting console");

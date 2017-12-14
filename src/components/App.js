@@ -3,6 +3,7 @@ import DevForm from './DevForm';
 import DevList from './devList';
 import sampleDevs from '../sample-dev'
 import base from '../base'
+import Header from './Header'
 
 
 class App extends React.Component {
@@ -20,7 +21,31 @@ class App extends React.Component {
     this.loadSamples = this.loadSamples.bind(this)
     this.removeDev = this.removeDev.bind(this)
   }
-  
+
+  componentDidMount() {
+    const itemsRef = base.database().ref('devs');
+    itemsRef.on('value', (snapshot) => {
+      let devs = snapshot.val();
+      let newState = [];
+      for (let dev in devs) {
+        newState.push({
+          id: devs[dev].id,
+          name: devs[dev].name,
+          desc: devs[dev].desc,
+          image: devs[dev].image,
+          price: devs[dev].price,
+          status: devs[dev].status
+
+
+        });
+      }
+      this.setState({
+        devs: newState
+      });
+      
+      console.log(devs)
+    });
+  }
  /**
   * method to add new developer 
   */
@@ -40,6 +65,8 @@ class App extends React.Component {
    * load the initial dev data
    */
   loadSamples() {
+  //  const itemsRef = base.database().ref('devs');
+   
     this.setState({
       devs: sampleDevs
     });
@@ -50,6 +77,7 @@ class App extends React.Component {
   render() {
     return (
       <div >
+       <Header /> 
        <DevList loadSamples={this.loadSamples} devs={this.state.devs} removeDev={this.removeDev} /> 
         <DevForm data="send some data from parents" addDev={this.addDev} />
         <h2 >  </h2>
