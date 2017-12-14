@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import DevForm from './DevForm';
 import DevList from './devList';

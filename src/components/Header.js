@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 
 class Header extends React.Component {
@@ -20,8 +21,8 @@ class Header extends React.Component {
                                 <li><a href="#">Page 1-3</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Page 2</a></li>
-                        <li><a href="#">Page 3</a></li>
+                        <li><a href="#">Developers</a></li>
+                        <li><a href="#">Jobs</a></li>
                     </ul>
                 </div>
             </nav>)
