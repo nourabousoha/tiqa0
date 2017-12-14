@@ -16,12 +16,15 @@ class Dev extends React.Component {
     }
     render() {
         return (
-            <div className="jumbotron" >
+            <div className="panel panel-primary" >
+            <div className="panel-heading">
+            <h2>{this.val.name}</h2>
+            </div>
                 <div className="container">
                     <div className="col-md-2">
-                        <img className="thumbnail img-responsive" src={this.val.image} alt="an alternative" />
+                        <img className="img-responsive" src={this.val.image} alt="an alternative" />
                     </div>
-                    <h2>{this.val.name}</h2>
+                    
                     <h3 >{this.val.status}</h3>
                     <p >{this.val.desc}</p>
                     <button type="submit" onClick={this.removeDev}>Remove</button>
