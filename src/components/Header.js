@@ -11,7 +11,7 @@ class Header extends React.Component {
                         <a className="navbar-brand" href="#">TIQA shared <i className="fa fa-handshake-o" aria-hidden="true" style={{color:'green'}}></i>confidence</a>
                     </div>
                     <ul className="nav navbar-nav">
-                        <li className="active"><a href="#">Home</a></li>
+                        <li className="active"><a href="/">Home</a></li>
                         <li className="dropdown">
                             <a className="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
       <span className="caret"></span></a>
@@ -21,8 +21,8 @@ class Header extends React.Component {
                                 <li><a href="#">Page 1-3</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Developers</a></li>
-                        <li><a href="#">Jobs</a></li>
+                        <li><a href="dev">Developers</a></li>
+                        <li><a href="jobs">Jobs</a></li>
                     </ul>
                 </div>
             </nav>)

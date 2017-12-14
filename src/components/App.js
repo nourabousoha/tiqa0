@@ -44,22 +44,35 @@ class App extends React.Component {
         devs: newState
       });
       
-      console.log(devs)
+     
     });
   }
  /**
   * method to add new developer 
   */
   addDev(dev) {
-    const devs = this.state.devs
+    const devs = this.state.devs.slice();
     devs.push(dev)
     const itemsRef = base.database().ref('devs');
     console.log("connected to the database")
     itemsRef.push(dev);
     this.setState({ devs })
   }
+  updateDev(id,updatedDev) {
+    const itemsRef = base.database().ref('devs');
+    const devs = this.state.devs.slice();
+    for (let i in projects) {
+      if (devs[i].id == id) {
+         devs[i] = updatedDev;
+         itemsRef[i]= updatedDev;
+         break; //Stop this loop, we found it!
+      }
+    }
+       
+    this.setState({ devs })
+  }
   removeDev(id){
-    const devs = this.state.devs.filter(ele=>ele.id!==id)
+    const devs = this.state.devs.slice().filter(ele=>ele.id!==id)
     this.setState({ devs })
   }
   /**
