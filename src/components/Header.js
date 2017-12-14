@@ -1,5 +1,5 @@
 import React from 'react';
-
+/*just for a merge test */
 class Header extends React.Component {
     render() {
 
