@@ -90,7 +90,7 @@ class App extends React.Component {
     return (
       <div >
        <Header /> 
-       <DevList loadSamples={this.loadSamples} devs={this.state.devs} removeDev={this.removeDev} /> 
+       <DevList devs={this.state.devs} removeDev={this.removeDev} /> 
         <DevForm data="send some data from parents" addDev={this.addDev} />
         <h2 >  </h2>
       </div>

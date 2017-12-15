@@ -4,7 +4,7 @@
 
 export const ADD_DEV = 'ADD_DEC'
 export const REMOVE_DEV = 'REMOVE_DEV'
-export const SHOW_ALL_DEVS = 'SHOW_ALL_DEVS'
+export const LOAD_DEVS = 'LOAD_DEVS'
 
 
 
@@ -12,7 +12,7 @@ export const SHOW_ALL_DEVS = 'SHOW_ALL_DEVS'
  * action creators
  */
 
-export function addDEV(dev) {
+export function addDev(dev) {
   return { type: ADD_DEV, dev }
 }
 
@@ -20,3 +20,7 @@ export function removeDev(index) {
   return { type: REMOVE_DEV, index }
 }
 
+export function loadDevs() {
+    return { type: LOAD_DEVS }
+  }
+  
