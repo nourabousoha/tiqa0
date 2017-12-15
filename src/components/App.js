@@ -19,33 +19,12 @@ class App extends React.Component {
       clients: []
               }
     this.addDev = this.addDev.bind(this)
-    this.loadSamples = this.loadSamples.bind(this)
+    this.loadDevs = this.loadDevs.bind(this)
     this.removeDev = this.removeDev.bind(this)
   }
 
   componentDidMount() {
-    const itemsRef = base.database().ref('devs');
-    itemsRef.on('value', (snapshot) => {
-      let devs = snapshot.val();
-      let newState = [];
-      for (let dev in devs) {
-        newState.push({
-          id: devs[dev].id,
-          name: devs[dev].name,
-          desc: devs[dev].desc,
-          image: devs[dev].image,
-          price: devs[dev].price,
-          status: devs[dev].status
-
-
-        });
-      }
-      this.setState({
-        devs: newState
-      });
-      
-     
-    });
+    this.loadDevs()
   }
  /**
   * method to add new developer 
@@ -78,12 +57,31 @@ class App extends React.Component {
   /**
    * load the initial dev data
    */
-  loadSamples() {
+  loadDevs() {
   //  const itemsRef = base.database().ref('devs');
    
+  const itemsRef = base.database().ref('devs');
+  itemsRef.on('value', (snapshot) => {
+    let devs = snapshot.val();
+    let newState = [];
+    for (let dev in devs) {
+      newState.push({
+        id: devs[dev].id,
+        name: devs[dev].name,
+        desc: devs[dev].desc,
+        image: devs[dev].image,
+        price: devs[dev].price,
+        status: devs[dev].status
+
+
+      });
+    }
     this.setState({
-      devs: sampleDevs
+      devs: newState
     });
+    
+   
+  });
   }
 
   
