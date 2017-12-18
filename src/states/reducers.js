@@ -10,11 +10,8 @@ import {
 function dev(state = {}, action) {
     switch (action.type) {
         case ADD_DEV:
-            return [
-                ...state,
-                action.dev
-            ]
-        
+            return action.dev
+                 
               default:
             return state
 
@@ -23,9 +20,9 @@ function dev(state = {}, action) {
 function devs(state = [], action) {
     switch (action.type) {
         case ADD_DEV:
-            return dev(action.dev)
+            return [...state,dev({},action)]
         case REMOVE_DEV:
-            return this.state.slice().filter(ele=>ele.id!==action.index)
+            return state.slice().filter(ele=>ele.id!==action.index)
 
         case LOAD_DEVS:
             return state

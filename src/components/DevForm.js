@@ -1,6 +1,7 @@
 import React from 'react';
 const uuidv4 = require('uuid/v4');
 import { connect } from 'react-redux'
+import {addDev} from '../states/actions'
 
 class DevForm extends React.Component {
     constructor(props) {
@@ -19,10 +20,8 @@ class DevForm extends React.Component {
            image:_photo.value,
            status:_status.value,
            price:_password.value
-
-       }
-      
-       this.props.dispatch.addDev(dev)
+                  }
+    this.props.addDev(dev)       
        _devform.reset()
     }
     render() {
@@ -64,5 +63,19 @@ class DevForm extends React.Component {
         )
     }
 }
-DevForm = connect()(DevForm)
+const mapStateToProps = state => {
+    return {
+      dev: state.dev
+    }
+  }
+  const mapDispatchToProps = dispatch => {
+    return {
+        addDev: dev => {
+        dispatch(addDev(dev))
+      }
+    }
+  }
+  
+
+DevForm = connect(mapStateToProps,mapDispatchToProps)(DevForm)
 export default DevForm;

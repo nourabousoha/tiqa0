@@ -49,7 +49,7 @@ class DevList extends React.Component {
             <div>
                 <h1>Our future genius</h1>
                 {/*this.props.devs.map(x=>dev(x))*/}
-                {this.props.devs.map(x=><Dev val={x} key={x.id} removeDev/>)}
+                {this.props.devs.map(x=><Dev val={x} key={x.id} />)}
         </div>
 )
     }

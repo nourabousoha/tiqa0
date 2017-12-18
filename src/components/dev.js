@@ -1,18 +1,21 @@
 /* eslint-disable */
 
 import React from 'react';
+import { connect } from 'react-redux'
+import {removeDev} from '../states/actions'
 
 class Dev extends React.Component {
     constructor(props) {
 
         super(props)
-        this.removeDev = this.removeDev.bind(this)
+        this.remove = this.remove.bind(this)
     }
     val = this.props.val
-    removeDev(e) {
+    remove(e) {
         e.preventDefault();
+        const id = this.val.id
         console.log('Gonna a remove this dev')
-        this.props.removeDev(this.val.id)
+        this.props.removeDev(id)
     }
     render() {
         return (
@@ -33,7 +36,7 @@ class Dev extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col-md-2 col-md-offset-8">
-                            <button type="submit" className="btn btn-danger " onClick={this.removeDev}>Remove</button>
+                            <button type="submit" className="btn btn-danger " onClick={this.remove}>Remove</button>
                         </div>
                         <div className="col-md-2">
                             <button type="submit" className="btn btn-success" >Edit  </button>
@@ -49,4 +52,19 @@ class Dev extends React.Component {
             </div>)
     }
 }
+const mapStateToProps = state => {
+    return {
+      devs: state.devs,
+          }
+  }
+  const mapDispatchToProps = dispatch => {
+    return {
+        removeDev: id => {
+        dispatch(removeDev(id))
+      }
+    }
+  }
+  
+
+Dev = connect(mapStateToProps,mapDispatchToProps)(Dev)
 export default Dev;
