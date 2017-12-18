@@ -7,13 +7,23 @@ import {
 
 
 
-function devreducer(state = [], action) {
+function dev(state = {}, action) {
     switch (action.type) {
         case ADD_DEV:
             return [
                 ...state,
                 action.dev
             ]
+        
+              default:
+            return state
+
+    }
+}
+function devs(state = [], action) {
+    switch (action.type) {
+        case ADD_DEV:
+            return dev(action.dev)
         case REMOVE_DEV:
             return this.state.slice().filter(ele=>ele.id!==action.index)
 
@@ -26,7 +36,7 @@ function devreducer(state = [], action) {
 }
 
 const devApp = combineReducers({
-    devreducer
+    devs,dev
 })
 
 export default devApp

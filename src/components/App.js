@@ -2,9 +2,10 @@
 import React from 'react';
 import DevForm from './DevForm';
 import DevList from './devList';
-import sampleDevs from '../sample-dev'
+//import sampleDevs from '../sample-dev'
 import base from '../base'
 import Header from './Header'
+import { connect } from 'react-redux'
 
 
 class App extends React.Component {
@@ -13,18 +14,14 @@ class App extends React.Component {
 
     super()
 // initial state
-    this.state = {
-      devs: [],
-      jobs: [],
-      clients: []
-              }
-    this.addDev = this.addDev.bind(this)
-    this.loadDevs = this.loadDevs.bind(this)
-    this.removeDev = this.removeDev.bind(this)
+   
+    //this.addDev = this.addDev.bind(this)
+   // this.loadDevs = this.loadDevs.bind(this)
+   // this.removeDev = this.removeDev.bind(this)
   }
 
   componentDidMount() {
-    this.loadDevs()
+   // this.loadDevs()
   }
  /**
   * method to add new developer 
@@ -35,11 +32,11 @@ class App extends React.Component {
     const itemsRef = base.database().ref('devs');
     console.log("connected to the database")
     itemsRef.push(dev);
-    this.setState({ devs })
+   // this.setState({ devs })
   }
   updateDev(id,updatedDev) {
     const itemsRef = base.database().ref('devs');
-    const devs = this.state.devs.slice();
+    //const devs = this.state.devs.slice();
     for (let i in projects) {
       if (devs[i].id == id) {
          devs[i] = updatedDev;
@@ -48,16 +45,17 @@ class App extends React.Component {
       }
     }
        
-    this.setState({ devs })
+    //this.setState({ devs })
   }
   removeDev(id){
-    const devs = this.state.devs.slice().filter(ele=>ele.id!==id)
-    this.setState({ devs })
+   // const devs = this.state.devs.slice().filter(ele=>ele.id!==id)
+  //  this.setState({ devs })
   }
   /**
    * load the initial dev data
    */
-  loadDevs() {
+  
+  /* loadDevs() {
   //  const itemsRef = base.database().ref('devs');
    
   const itemsRef = base.database().ref('devs');
@@ -83,19 +81,20 @@ class App extends React.Component {
    
   });
   }
-
+*/
   
 // finally we rander our app
   render() {
     return (
       <div >
        <Header /> 
-       <DevList devs={this.state.devs} removeDev={this.removeDev} /> 
-        <DevForm data="send some data from parents" addDev={this.addDev} />
+       <DevList  /> 
+        <DevForm data="send some data from parents"  />
         <h2 >  </h2>
       </div>
     )
   }
 }
+App = connect()(App)
 
 export default App;

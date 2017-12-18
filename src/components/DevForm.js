@@ -1,5 +1,6 @@
 import React from 'react';
 const uuidv4 = require('uuid/v4');
+import { connect } from 'react-redux'
 
 class DevForm extends React.Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class DevForm extends React.Component {
 
        }
       
-       this.props.addDev(dev)
+       this.props.dispatch.addDev(dev)
        _devform.reset()
     }
     render() {
@@ -63,4 +64,5 @@ class DevForm extends React.Component {
         )
     }
 }
+DevForm = connect()(DevForm)
 export default DevForm;

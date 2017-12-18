@@ -2,7 +2,7 @@
   "name": "tiqa",
   "version": "0.0.1",
   "private": true,
-  "homepage": "https://nourabousoha.github.io/taqa0",
+  "homepage": "https://nourabousoha.github.io/",
   "devDependencies": {
     "autoprefixer-stylus": "0.10.0",
     "babel-eslint": "^7.1.1",
