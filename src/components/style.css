@@ -1,0 +1,13 @@
+.shared{
+    color:green;
+}
+.navbar{
+    margin-bottom: 0px;
+}
+.uppsection{
+background-image:url(//www.upwork.com/static/marketing/adquiro-webpack/images/yellow-homepage-hero-image.2ee2461cf40f.jpg);
+    text-align: left;
+max-height: 600px;
+min-height: 500px;
+height: 66vh;
+}
