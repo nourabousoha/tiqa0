@@ -1,5 +1,7 @@
 import React from 'react';
 const uuidv4 = require('uuid/v4');
+import { connect } from 'react-redux'
+import {addDev} from '../states/actions'
 
 class DevForm extends React.Component {
     constructor(props) {
@@ -18,17 +20,15 @@ class DevForm extends React.Component {
            image:_photo.value,
            status:_status.value,
            price:_password.value
-
-       }
-      
-       this.props.addDev(dev)
+                  }
+    this.props.addDev(dev)       
        _devform.reset()
     }
     render() {
         return (
-            <div>
-                <h1>Hello from react my data is</h1>
-                <form onSubmit={this.createDev} ref="_devform">
+            <div className="row col-md-12 text-center">
+                <h1><span className="label label-primary">Add a new Developer</span></h1>
+                <form onSubmit={this.createDev} ref="_devform" className="form">
                     <div className="form-group">
                         <label htmlFor="devname">Name: </label>
                         <input id="devname" className="form-control" ref="_name" type="text" placeholder="your name here..." required />
@@ -63,4 +63,19 @@ class DevForm extends React.Component {
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+      dev: state.dev
+    }
+  }
+  const mapDispatchToProps = dispatch => {
+    return {
+        addDev: dev => {
+        dispatch(addDev(dev))
+      }
+    }
+  }
+  
+
+DevForm = connect(mapStateToProps,mapDispatchToProps)(DevForm)
 export default DevForm;
