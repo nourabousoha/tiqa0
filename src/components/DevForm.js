@@ -26,9 +26,9 @@ class DevForm extends React.Component {
     }
     render() {
         return (
-            <div>
-                <h1>Hello from react my data is</h1>
-                <form onSubmit={this.createDev} ref="_devform">
+            <div className="row col-md-12 text-center">
+                <h1><span className="label label-primary">Add a new Developer</span></h1>
+                <form onSubmit={this.createDev} ref="_devform" className="form">
                     <div className="form-group">
                         <label htmlFor="devname">Name: </label>
                         <input id="devname" className="form-control" ref="_name" type="text" placeholder="your name here..." required />

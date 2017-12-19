@@ -19,10 +19,6 @@ export function removeDev(index) {
   return { type: REMOVE_DEV, index }
 }
 
-export function loadDevs() {
-  return { type: LOAD_DEVS }
-}
-
 export function requestDevs() {
   return {
     type: REQUEST_DEVS

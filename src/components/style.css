@@ -11,3 +11,6 @@ max-height: 600px;
 min-height: 500px;
 height: 66vh;
 }
+.dev{
+    max-width: 1200px;
+}

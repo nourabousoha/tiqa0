@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux'
-import {removeDev} from '../states/actions'
+import { removeDev } from '../states/actions'
 
 class Dev extends React.Component {
     constructor(props) {
@@ -19,29 +19,41 @@ class Dev extends React.Component {
     }
     render() {
         return (
-            <div className="panel panel-primary" >
+           
+            <div className="panel panel-primary dev" >
                 <div className="panel-heading">
-                    <h4>{this.val.name}</h4>
+                    {this.val.name}
                 </div>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-2">
-                            <img className="img-responsive" src={this.val.image} alt="an alternative" />
+                            <img className="img-responsive img-circle" src={this.val.image} alt="an alternative" />
                         </div>
 
                         <h3 >{this.val.status}</h3>
                         <div className="col-md-8">
-                        <p >{this.val.desc}</p>
+                            <p >{this.val.desc}</p>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-md-2 col-md-offset-8">
-                            <button type="submit" className="btn btn-danger " onClick={this.remove}>Remove</button>
+
+
+                    <div className="row col-md-12">
+                        <div className="form-inline  visible-lg visible-md">
+
+                            <div className="input-group col-md-2 pull-right">
+                                <button className="form-control btn btn-danger " type="submit" onClick={this.remove}>Remove</button>
+
+                            </div>
+                            <div className="input-group col-md-2 col-md-offset-5">
+                                <button className="form-control btn btn-success" type="submit" onClick={this.edit}>Edit</button>
+
+                            </div>
                         </div>
-                        <div className="col-md-2">
-                            <button type="submit" className="btn btn-success" >Edit  </button>
-                        </div>
+
                     </div>
+
+
+
                     <div>
 
                     </div>
@@ -49,22 +61,24 @@ class Dev extends React.Component {
 
 
                 </div>
-            </div>)
+            </div>
+         
+            )
     }
 }
 const mapStateToProps = state => {
     return {
-      devs: state.devs,
-          }
-  }
-  const mapDispatchToProps = dispatch => {
+        devs: state.devs,
+    }
+}
+const mapDispatchToProps = dispatch => {
     return {
         removeDev: id => {
-        dispatch(removeDev(id))
-      }
+            dispatch(removeDev(id))
+        }
     }
-  }
-  
+}
 
-Dev = connect(mapStateToProps,mapDispatchToProps)(Dev)
+
+Dev = connect(mapStateToProps, mapDispatchToProps)(Dev)
 export default Dev;

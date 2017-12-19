@@ -2,7 +2,8 @@ import { combineReducers } from 'redux'
 import {
     ADD_DEV,
     REMOVE_DEV,
-    LOAD_DEVS
+    REQUEST_DEVS,
+    RECEIVE_DEVS
 } from './actions'
 
 
@@ -24,7 +25,9 @@ function devs(state = [], action) {
         case REMOVE_DEV:
             return state.slice().filter(ele=>ele.id!==action.index)
 
-        case LOAD_DEVS:
+        case RECEIVE_DEVS:
+            return state
+        case REQUEST_DEVS:
             return state
         default:
             return state

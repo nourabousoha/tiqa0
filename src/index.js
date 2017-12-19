@@ -16,6 +16,13 @@ import { Provider } from 'react-redux'
 */
 let store = createStore(devApp, {
   devs: [{
+    name: 'Bill Gates',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/1/19/Bill_Gates_June_2015.jpg',
+    desc: " informaticien et entrepreneur américain, pionnier dans le domaine de la micro-informatique. Il a fondé en 1975, à l'âge de 20 ans, avec son ami Paul Allen, la société de logiciels de micro-informatique Micro-Soft (rebaptisée depuis Microsoft).",
+    price: 1724,
+    status: 'available',
+    id:1
+  },{
     name: 'King Crab',
     image: 'http://i.istockimg.com/file_thumbview_approve/18294110/5/stock-photo-18294110-king-crab-legs.jpg',
     desc: 'Crack these open and enjoy them plain or with one of our cocktail sauces',
