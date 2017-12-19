@@ -16,7 +16,7 @@ class DevList extends React.Component {
         
         return (
             
-            <div className="col-md-9 col-md-offset-2">
+            <div className="col-md-6 col-md-offset-3">
                
                 {this.props.devs.map(x=><Dev val={x} key={x.id} />)}
         </div>

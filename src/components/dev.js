@@ -19,7 +19,7 @@ class Dev extends React.Component {
     }
     render() {
         return (
-           
+
             <div className="panel panel-primary dev" >
                 <div className="panel-heading">
                     {this.val.name}
@@ -31,21 +31,23 @@ class Dev extends React.Component {
                         </div>
 
                         <h3 >{this.val.status}</h3>
-                        <div className="col-md-8">
+                        <div className="col-md-5">
                             <p >{this.val.desc}</p>
                         </div>
                     </div>
 
 
-                    <div className="row col-md-12">
+                    <div className="row col-md-6">
                         <div className="form-inline  visible-lg visible-md">
 
-                            <div className="input-group col-md-2 pull-right">
-                                <button className="form-control btn btn-danger " type="submit" onClick={this.remove}>Remove</button>
+                            <div className="input-group col-md-1 pull-right">
+                                <button className="form-control btn btn-danger devbutton " type="submit" onClick={this.remove}><i className="fa fa-trash-o" aria-hidden="true">&nbsp;</i>Remove
+                                    </button>
 
                             </div>
-                            <div className="input-group col-md-2 col-md-offset-5">
-                                <button className="form-control btn btn-success" type="submit" onClick={this.edit}>Edit</button>
+                            <div className="input-group col-md-1 col-md-offset-6">
+                                <button className="form-control btn btn-success devbutton" type="submit" onClick={this.edit}><i className="fa fa-pencil-square-o" aria-hidden="true">&nbsp;</i>
+Edit</button>
 
                             </div>
                         </div>
@@ -62,8 +64,8 @@ class Dev extends React.Component {
 
                 </div>
             </div>
-         
-            )
+
+        )
     }
 }
 const mapStateToProps = state => {

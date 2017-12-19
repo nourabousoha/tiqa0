@@ -26,7 +26,7 @@ function devs(state = [], action) {
             return state.slice().filter(ele=>ele.id!==action.index)
 
         case RECEIVE_DEVS:
-            return state
+            return action.devs
         case REQUEST_DEVS:
             return state
         default:

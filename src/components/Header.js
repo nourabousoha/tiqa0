@@ -6,7 +6,7 @@ class Header extends React.Component {
     render() {
 
         return (
-            <nav className="navbar navbar-inverse">
+            <nav className="navbar navbar-inverse top">
                 <div className="container-fluid">
                     <div className="navbar-header">
                         <a className="navbar-brand" href="#">TIQA shared <i className="fa fa-handshake-o shared" aria-hidden="true" ></i>confidence</a>
