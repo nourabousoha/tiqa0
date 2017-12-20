@@ -9,6 +9,14 @@ export const REMOVE_DEV = 'REMOVE_DEV'
 export const LOAD_DEVS = 'LOAD_DEVS'
 export const REQUEST_DEVS = 'REQUEST_DEVS'
 export const RECEIVE_DEVS = 'RECEIVE_DEVS'
+export const TOGGLE_ADD_DEV = 'TOGGLE_ADD_DEV';
+
+// Export Actions
+export function toggleAddDev() {
+  return {
+    type: TOGGLE_ADD_DEV,
+  };
+}
 
 
 export function loadDevs() {

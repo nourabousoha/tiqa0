@@ -3,10 +3,31 @@ import {
     ADD_DEV,
     REMOVE_DEV,
     REQUEST_DEVS,
-    RECEIVE_DEVS
+    RECEIVE_DEVS,
+    TOGGLE_ADD_DEV
 } from './actions'
 
-
+// Initial State
+const initialState = {
+    showAddDev: false,
+  };
+  
+  const AppReducer = (state = initialState, action) => {
+    switch (action.type) {
+      case TOGGLE_ADD_DEV:
+        return {
+          showAddDev: !state.showAddDev,
+        };
+  
+      default:
+        return state;
+    }
+  };
+  
+  /* Selectors */
+  
+  // Get showAddPost
+  export const getShowAddDev = state => state.app.showAddDev;
 
 function dev(state = {}, action) {
     switch (action.type) {
@@ -36,7 +57,7 @@ function devs(state = [], action) {
 }
 
 const devApp = combineReducers({
-    devs,dev
+    devs,dev,app:AppReducer
 })
 
 export default devApp

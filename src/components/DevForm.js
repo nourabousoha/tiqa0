@@ -9,6 +9,8 @@ class DevForm extends React.Component {
         super(props)
         this.createDev = this.createDev.bind(this)
     }
+
+    
     createDev(e) {
         const { _name, _desc,_photo,_password,_status,_devform } = this.refs
         e.preventDefault();
@@ -26,46 +28,49 @@ class DevForm extends React.Component {
     }
     render() {
         return (
-            <div className="row col-md-12 text-center">
-                <h1><span className="label label-primary">Add a new Developer</span></h1>
-                <form onSubmit={this.createDev} ref="_devform" className="form">
+            <div className="row col-md-12 text-center add-form-container" style={{ display:this.props.showAddDev?"block":"none"}}>
+            
+             <div className="row col-md-6 col-md-offset-3 ">  
+                <form onSubmit={this.createDev} ref="_devform" className="form form-horizontal" >
                     <div className="form-group">
-                        <label htmlFor="devname">Name: </label>
-                        <input id="devname" className="form-control" ref="_name" type="text" placeholder="your name here..." required />
+                        <label htmlFor="devname" className="control-label col-sm-2">Name: </label>
+                        <div className="col-sm-6">   <input id="devname" className="form-control" ref="_name" type="text" placeholder="your name here..." required /></div>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="devdesc">Skills:</label>
-                        <input id="devdesc" className="form-control" ref="_desc" type="text" placeholder="tell us more about you..." required />
+                        <label htmlFor="devdesc" className="control-label col-sm-2">Skills:</label>
+                        <div className="col-sm-6"> <input id="devdesc" className="form-control" ref="_desc" type="text" placeholder="tell us more about you..." required /></div>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="devdesc">Photo:</label>
-                        <input id="devphoto" className="form-control" ref="_photo" type="text" placeholder="photo url..." required />
+                        <label htmlFor="devdesc" className="control-label col-sm-2">Photo:</label>
+                        <div className="col-sm-6">   <input id="devphoto" className="form-control" ref="_photo" type="text" placeholder="photo url..." required /></div>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="devemail">Email address:</label>
-                        <input type="email" className="form-control" id="devemail" ref="_email" aria-describedby="emailHelp" placeholder="Enter email"></input>
+                        <label htmlFor="devemail" className="control-label col-sm-2">Email address:</label>
+                        <div className="col-sm-6">  <input type="email" className="form-control" id="devemail" ref="_email" aria-describedby="emailHelp" placeholder="Enter email"></input></div>
                         <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="devpassword">Password</label>
-                        <input type="password" className="form-control" id="devpassword" placeholder="Password" ref="_password"></input>
+                        <label htmlFor="devpassword" className="control-label col-sm-2">Password</label>
+                        <div className="col-sm-6"> <input type="password" className="form-control" id="devpassword" placeholder="Password" ref="_password"></input></div>
                     </div>
                     <div className="form-check">
-                        <label className="form-check-label">
+                        <label className="control-label form-check-label col-sm-2" >I'am available</label>
                             <input type="checkbox" className="form-check-input" ref="_status"></input>
-                            I'am available
-    </label>
+                            
+                   
                     </div>
                     <button className="btn btn-primary">ADD</button>
 
                 </form>
+                </div>
             </div>
         )
     }
 }
 const mapStateToProps = state => {
     return {
-      dev: state.dev
+      dev: state.dev,
+      showAddDev:state.app.showAddDev
     }
   }
   const mapDispatchToProps = dispatch => {

@@ -9,23 +9,31 @@ import { loadDevs } from '../states/actions';
  * 
  */
 class DevList extends React.Component {
-    
-
+    constructor(props){
+        super(props)
+            }
+   
     
     render() {
         
+        
         return (
-            
+            <div>
+            <div className="row col-md-6 col-md-offset-3 ">
+                <a className="btn add-dev-button" onClick={this.props.toggleAddDev}>Add a new Developer</a>
+             </div> 
             <div className="col-md-6 col-md-offset-3">
                
                 {this.props.devs.map(x=><Dev val={x} key={x.id} />)}
+        </div>
         </div>
 )
     }
 }
 const mapStateToProps = state => {
     return {
-      devs: state.devs
+      devs: state.devs,
+      
     }
   }
 DevList = connect(mapStateToProps)(DevList)
