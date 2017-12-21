@@ -10,7 +10,7 @@ class Header extends React.Component {
             <nav className="navbar navbar-inverse top">
                 <div className="container-fluid">
                     <div className="navbar-header">
-                        <Link className="navbar-brand" to="/">TIQA shared <i className="fa fa-handshake-o shared" aria-hidden="true" ></i>confidence</Link>
+                        <Link className="navbar-brand" to="/">TIQA shared <i className="fa fa-handshake-o shared" aria-hidden="true" ></i>Trust</Link>
                     </div>
                     <ul className="nav navbar-nav">
                         <li><NavLink exact={true} activeClassName="isactive" to="/">Home</NavLink></li>
