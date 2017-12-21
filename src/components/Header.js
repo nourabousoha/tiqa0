@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import style from './style.css'
+import {Link,NavLink} from 'react-router-dom'
 /*just for a merge test */
 class Header extends React.Component {
     render() {
@@ -9,13 +10,13 @@ class Header extends React.Component {
             <nav className="navbar navbar-inverse top">
                 <div className="container-fluid">
                     <div className="navbar-header">
-                        <a className="navbar-brand" href="#">TIQA shared <i className="fa fa-handshake-o shared" aria-hidden="true" ></i>confidence</a>
+                        <Link className="navbar-brand" to="/">TIQA shared <i className="fa fa-handshake-o shared" aria-hidden="true" ></i>confidence</Link>
                     </div>
                     <ul className="nav navbar-nav">
-                        <li className="active"><a href="/">Home</a></li>
+                        <li><NavLink exact={true} activeClassName="isactive" to="/">Home</NavLink></li>
                         
-                        <li><a href="dev">Developers</a></li>
-                        <li><a href="jobs">Jobs</a></li>
+                        <li><NavLink activeClassName="isactive" to="/dev">Developers</NavLink></li>
+                        <li><Link to="/jobs">Jobs</Link></li>
                     </ul>
                 </div>
             </nav>)
