@@ -27,7 +27,7 @@ class Dev extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-2">
-                            <img className="img-responsive img-circle" src={this.val.image} alt="an alternative" />
+                            <img className="dev-photo img-responsive img-circle" src={this.val.image} alt="an alternative" />
                         </div>
 
                         <h3 >{this.val.status}</h3>
