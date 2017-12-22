@@ -20,7 +20,7 @@ class DevList extends React.Component {
         return (
             <div>
             <div className="row col-md-6 col-md-offset-3 ">
-                <a className="btn add-dev-button" onClick={this.props.toggleAddDev}>{this.props.showAddDev?"Cancel":"Add a new Developer"}</a>
+                <a className="btn btn-primary add-dev-button" onClick={this.props.toggleAddDev}>{this.props.showAddDev?"Cancel":"Add a new Developer"}</a>
              </div> 
             <div className="col-md-6 col-md-offset-3">
                

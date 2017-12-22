@@ -31,12 +31,9 @@ height: 66vh;
 }
 .add-dev-button {
     display: inline-block;
-    color: #FFF;
-    background: #03A9F4;
     padding: 8px 16px;
     text-decoration: none;
-    border-radius: 1000px;
-    float: right;
+    margin-top: 30px;
     margin-bottom: 30px;
   }
   .add-form-container{
@@ -49,4 +46,11 @@ height: 66vh;
   }
   .isactive{
       color: blanchedalmond !important;
+  }
+  .edit-form-container{
+    margin-bottom: 30px;
+    
+  }
+  .cancel-update{
+      margin-top: 20px;
   }

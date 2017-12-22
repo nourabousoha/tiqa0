@@ -4,19 +4,26 @@ import {
     REMOVE_DEV,
     REQUEST_DEVS,
     RECEIVE_DEVS,
-    TOGGLE_ADD_DEV
+    TOGGLE_ADD_DEV,
+    TOGGLE_EDIT_DEV,    
+    UPDATE_DEV
 } from './actions'
 
 // Initial State
 const initialState = {
     showAddDev: false,
+    toggleEdit:false
   };
   
   const AppReducer = (state = initialState, action) => {
     switch (action.type) {
       case TOGGLE_ADD_DEV:
         return {
-          showAddDev: !state.showAddDev,
+          toggleEdit: action.id
+        };
+        case TOGGLE_EDIT_DEV:
+        return {
+          showAddDev: !state.showAddDev
         };
   
       default:
@@ -33,7 +40,8 @@ function dev(state = {}, action) {
     switch (action.type) {
         case ADD_DEV:
             return action.dev
-                 
+        case UPDATE_DEV:
+            return action.dev         
               default:
             return state
 
@@ -45,7 +53,8 @@ function devs(state = [], action) {
             return [...state,dev({},action)]
         case REMOVE_DEV:
             return state.slice().filter(ele=>ele.id!==action.index)
-
+        case UPDATE_DEV:
+            return [...state.slice().filter(ele=>ele.id!==action.index),dev({},action)]
         case RECEIVE_DEVS:
             return action.devs
         case REQUEST_DEVS:

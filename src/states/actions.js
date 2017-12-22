@@ -5,16 +5,23 @@ const devsRef = base.database().ref('devs');
  */
 
 export const ADD_DEV = 'ADD_DEV'
+export const UPDATE_DEV = 'UPDATE_DEV'
 export const REMOVE_DEV = 'REMOVE_DEV'
 export const LOAD_DEVS = 'LOAD_DEVS'
 export const REQUEST_DEVS = 'REQUEST_DEVS'
 export const RECEIVE_DEVS = 'RECEIVE_DEVS'
 export const TOGGLE_ADD_DEV = 'TOGGLE_ADD_DEV';
+export const TOGGLE_EDIT_DEV = 'TOGGLE_EDIT_DEV';
 
 // Export Actions
 export function toggleAddDev() {
   return {
     type: TOGGLE_ADD_DEV,
+  };
+}
+export function toggleEditDev(id) {
+  return {
+    type: TOGGLE_ADD_DEV,id
   };
 }
 
@@ -28,7 +35,9 @@ export function loadDevs() {
 export function addDev(dev) {
   return { type: ADD_DEV, dev }
 }
-
+export function updateDev(dev) {
+  return { type: UPDATE_DEV, dev }
+}
 export function removeDev(index) {
   return { type: REMOVE_DEV, index }
 }
