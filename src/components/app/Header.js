@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import style from './style.css'
+import style from '../style.css'
 import {Link,NavLink} from 'react-router-dom'
 /*just for a merge test */
 class Header extends React.Component {

@@ -1,7 +1,7 @@
 import React from 'react';
 const uuidv4 = require('uuid/v4');
 import { connect } from 'react-redux'
-import {addDev} from '../states/actions'
+import {addDev} from '../../states/actions'
 
 class DevForm extends React.Component {
     constructor(props) {

@@ -10,7 +10,7 @@ class UpSection extends React.Component {
                 <div className="container">
                     <div className="row ">
                         <div className=" " >
-                            <h1 className="hidden-xs">Jen’s kicking butt and so is her web content</h1><h1 className="visible-xs">Get more done with freelancers</h1>
+                            <h1 className="hidden-xs">Land Top Talent to Your Projects</h1><h1 className="visible-xs">Get more done with freelancers</h1>
 
                             <p className="hidden-xs">Get more done with freelancers</p><p className="visible-xs">Grow your business with the top freelancing website</p>
 

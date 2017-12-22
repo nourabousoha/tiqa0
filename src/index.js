@@ -2,9 +2,9 @@ import 'babel-polyfill'
 import React from 'react';
 import { render } from 'react-dom';
 import {BrowserRouter as Router, Route,Switch } from 'react-router-dom'
-import App from './components/App';
-import NotFound from './components/NotFound';
-import Front from './components/Front';
+import App from './components/app/App';
+import NotFound from './components/app/NotFound';
+import Front from './components/app/Front';
 import {loadDevs} from './states/actions'
 import { createStore ,applyMiddleware } from 'redux'
 import devApp from './states/reducers'

@@ -1,6 +1,7 @@
 body{
     
     font-family: 'Roboto', monospace;
+    background-color:lightgray
 
    
 }
@@ -17,10 +18,11 @@ h1{
     margin-bottom: 0px;
 }
 .uppsection{
-background-image:url(//www.upwork.com/static/marketing/adquiro-webpack/images/yellow-homepage-hero-image.2ee2461cf40f.jpg);
+
+background-color: gold;
     text-align: left;
-max-height: 600px;
-min-height: 500px;
+max-height: 400px;
+min-height: 300px;
 height: 66vh;
 }
 .dev{

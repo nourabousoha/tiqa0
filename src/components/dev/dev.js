@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { removeDev } from '../states/actions'
-import { toggleEditDev } from '../states/actions'
+import { removeDev ,toggleEditDev } from '../../states/actions'
 import EditDEv from './EditDev'
 /**
  * render the dev componenet 
