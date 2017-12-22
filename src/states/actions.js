@@ -21,7 +21,7 @@ export function toggleAddDev() {
 }
 export function toggleEditDev(id) {
   return {
-    type: TOGGLE_ADD_DEV,id
+    type: TOGGLE_EDIT_DEV,id
   };
 }
 

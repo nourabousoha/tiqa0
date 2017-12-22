@@ -19,11 +19,12 @@ const initialState = {
     switch (action.type) {
       case TOGGLE_ADD_DEV:
         return {
-          toggleEdit: action.id
+         
+          showAddDev: !state.showAddDev
         };
         case TOGGLE_EDIT_DEV:
         return {
-          showAddDev: !state.showAddDev
+            toggleEdit: action.id
         };
   
       default:
