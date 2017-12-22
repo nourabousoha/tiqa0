@@ -1,95 +1,69 @@
-
-/*import React from 'react';
-import { connect } from 'react-redux'
-import { removeDev } from '../states/actions'
-
-class Dev extends React.Component {
-    constructor(props) {
-
-        super(props)
-        this.remove = this.remove.bind(this)
-    }
-    val = this.props.val
-    remove(e) {
-        e.preventDefault();
-        const id = this.val.id
-        console.log('Gonna a remove this dev')
-        this.props.removeDev(id)
-    }
-    render() {
-        return (
-
-            <div className="panel panel-primary dev" >
-                <div className="panel-heading">
-                    {this.val.name}
-                </div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-2">
-                            <img className="dev-photo img-responsive img-circle" src={this.val.image} alt="an alternative" />
-                        </div>
-
-                        <h3 >{this.val.status}</h3>
-                        <div className="col-md-5">
-                            <p >{this.val.desc}</p>
-                        </div>
-                    </div>
-
-
-                    <div className="row col-md-6">
-                        <div className="form-inline  visible-lg visible-md">
-
-                            <div className="input-group col-md-1 pull-right">
-                                <button className="form-control btn btn-danger devbutton " type="submit" onClick={this.remove}><i className="fa fa-trash-o" aria-hidden="true">&nbsp;</i>Remove
-                                    </button>
-
-                            </div>
-                            <div className="input-group col-md-1 col-md-offset-6">
-                                <button className="form-control btn btn-success devbutton" type="submit" onClick={this.edit}><i className="fa fa-pencil-square-o" aria-hidden="true">&nbsp;</i>
-Edit</button>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-
-
-                    <div>
-
-                    </div>
-
-
-
-                </div>
-            </div>
-
-        )
-    }
-}
-const mapStateToProps = state => {
-    return {
-        devs: state.devs,
-    }
-}
-const mapDispatchToProps = dispatch => {
-    return {
-        removeDev: id => {
-            dispatch(removeDev(id))
-        }
-    }
-}
-
-
-Dev = connect(mapStateToProps, mapDispatchToProps)(Dev)
-export default Dev;
-*/
-
-
 import React from 'react';
 import { connect } from 'react-redux'
 import { removeDev } from '../states/actions'
 import { toggleEditDev } from '../states/actions'
+/**
+ * render the dev componenet 
+ */
+function DevEditRemove(props){
+    const edit = props.edit
+    const remove = props.remove 
+   const  val = props.val
+    return (
+        <div className="row col-md-6">
+        <div className="form-inline  ">
+
+            <div className="input-group col-md-1 dev-edit-remove-button">
+                <a className="form-control btn btn-danger devbutton " type="submit" onClick={remove}><i className="fa fa-trash-o" aria-hidden="true">&nbsp;</i>
+                    </a>
+
+            </div>
+            <div className="input-group col-md-1 col-md-offset-2">
+                <a className="form-control btn btn-success dev-edit-remove-button" type="submit" onClick={edit}
+                    key={val.id}><i className="fa fa-pencil-square-o" aria-hidden="true">&nbsp;</i>
+                    </a>
+
+</div>
+        </div>
+
+    </div>
+    )
+}    
+
+function RenderDev(props){
+    const val = props.val
+    const edit = props.edit
+    const remove = props.remove 
+return  (<div className="panel panel-primary dev" >
+<div className="panel-heading">
+    {val.name}
+</div>
+<div className="container">
+    <div className="row">
+        <div className="col-md-2">
+            <img className="dev-photo img-responsive img-circle" src={val.image} alt="an alternative" />
+        </div>
+
+        <h3 >{val.status}</h3>
+        <div className="col-md-5">
+            <p >{val.desc}</p>
+        </div>
+    </div>
+
+
+    <div>
+
+    </div>
+
+
+
+</div>
+<DevEditRemove     val={val} edit={edit} remove={remove}     />
+
+</div>
+)
+}
+
 
 class Dev extends React.Component {
     constructor(props) {
@@ -100,17 +74,39 @@ class Dev extends React.Component {
         this.cancel = this.cancel.bind(this)
     }
     val = this.props.val
-
+    cancel(e){
+        e.preventDefault();
+        console.log('canceled')
+        this.props.toggleEditDev()
+    }
+    onChange(e){
+        e.preventDefault();
+        console.log('change occuring')
+           }
+    edit(e){
+        e.preventDefault();
+        const id = this.val.id
+       // const { name, desc,photo,password,status } = this.val
+        this.props.toggleEditDev(id)
+        const { _name, _desc,_photo,_password,_status,_devform } = this.refs
+             console.log('Gonna a edit this dev'+ _name)
+    }
+    remove(e) {
+        e.preventDefault();
+        const id = this.val.id
+        console.log('Gonna a remove this dev')
+        this.props.removeDev(id)
+    }
     renderDevOrEditField() {
        if (this.props.toggleEdit ===this.val.id) {
-
+            // handle  edit fields here
             return <div className="container"> <div className="row col-md-12 text-center edit-form-container" >
 
                 <div className="row col-md-6 col-md-offset-3 ">
                     <form ref="_devform" className="form form-horizontal" >
                         <div className="form-group">
                             <label htmlFor="devname" className="control-label col-sm-2">Name: </label>
-                            <div className="col-sm-6">   <input id="devname" className="form-control" ref="_name" type="text" placeholder="your name here..." value={this.val.name}required /></div>
+                            <div className="col-sm-6">   <input id="devname" onChange={this.onChange} className="form-control" ref="_name" type="text" placeholder="your name here..." value={this.val.name}required /></div>
                         </div>
                         <div className="form-group">
                             <label htmlFor="devdesc" className="control-label col-sm-2">Skills:</label>
@@ -142,79 +138,16 @@ class Dev extends React.Component {
                 </div>
             </div></div>
 
-            // Handle rendering our edit fields here.
+            // Handle rendering.
         } else {
-            return       <div className="panel panel-primary dev" >
-                <div className="panel-heading">
-                    {this.val.name}
-                </div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-2">
-                            <img className="dev-photo img-responsive img-circle" src={this.val.image} alt="an alternative" />
-                        </div>
-
-                        <h3 >{this.val.status}</h3>
-                        <div className="col-md-5">
-                            <p >{this.val.desc}</p>
-                        </div>
-                    </div>
-
-
-                    <div className="row col-md-6">
-                        <div className="form-inline  visible-lg visible-md">
-
-                            <div className="input-group col-md-1 pull-right">
-                                <button className="form-control btn btn-danger devbutton " type="submit" onClick={this.remove}><i className="fa fa-trash-o" aria-hidden="true">&nbsp;</i>Remove
-                                    </button>
-
-                            </div>
-                            <div className="input-group col-md-1 col-md-offset-6">
-                                <button className="form-control btn btn-success devbutton" type="submit" onClick={this.edit}
-                                    key={this.val.id}><i className="fa fa-pencil-square-o" aria-hidden="true">&nbsp;</i>
-                                    Edit</button>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-
-
-                    <div>
-
-                    </div>
-
-
-
-                </div>
-            </div>
-
-
-
-
-
-
+            return     <div class="container">
+                        <RenderDev val={this.val} edit={this.edit} remove={this.remove}/> 
+                       
+                       </div>
 
         }
     }
-    cancel(e){
-        e.preventDefault();
-        console.log('canceled')
-        this.props.toggleEditDev()
-    }
-    edit(e){
-        e.preventDefault();
-        const id = this.val.id
-        console.log('Gonna a edit this dev')
-        this.props.toggleEditDev(id)
-    }
-    remove(e) {
-        e.preventDefault();
-        const id = this.val.id
-        console.log('Gonna a remove this dev')
-        this.props.removeDev(id)
-    }
+    
     
     render() {
         return (
@@ -245,4 +178,4 @@ const mapDispatchToProps = dispatch => {
 
 
 Dev = connect(mapStateToProps, mapDispatchToProps)(Dev)
-export default Dev;
+export default Dev; 

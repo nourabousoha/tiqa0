@@ -25,9 +25,11 @@ height: 66vh;
 }
 .dev{
     max-width: 1200px;
+    margin-bottom: 50px !important ;
+
 }
-.devbutton{
-     width: 100px !important ;
+.dev-edit-remove-button{
+     margin-bottom: 0px !important ;
 }
 .add-dev-button {
     display: inline-block;
