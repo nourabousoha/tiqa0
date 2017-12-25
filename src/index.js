@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Route,Switch } from 'react-router-dom'
 import App from './components/app/App';
 import NotFound from './components/app/NotFound';
 import Front from './components/app/Front';
-import {loadDevs} from './states/actions'
+import {fetchDevs} from './states/actions'
 import { createStore ,applyMiddleware } from 'redux'
 import devApp from './states/reducers'
 import { Provider } from 'react-redux'
@@ -13,7 +13,7 @@ import thunk from 'redux-thunk';
 
 let store = createStore(devApp,{},applyMiddleware(thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-  store.dispatch(loadDevs());
+  store.dispatch(fetchDevs());
 console.log(store.getState())
 
 const Root = () => {
