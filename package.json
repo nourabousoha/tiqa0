@@ -21,8 +21,10 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "compression": "^1.7.1",
     "express": "^4.16.2",
     "history": "4.2.0",
+    "mongoose": "^4.13.7",
     "re-base": "2.2.0",
     "react": "15.3.2",
     "react-addons-css-transition-group": "15.3.2",
@@ -33,10 +35,11 @@
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
+    "sanitize-html": "^1.16.3",
     "uuid": "^3.1.0"
   },
   "scripts": {
-    "starts":"nodemon server.js --exec babel-node --presets es2015,stage-0,react",
+    "starts": "nodemon server.js --exec babel-node --presets es2015,stage-0,react",
     "start": "react-scripts start",
     "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
     "build": "react-scripts build",
