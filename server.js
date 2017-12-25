@@ -1,6 +1,7 @@
 import Express from 'express';
 import compression from 'compression';
 import mongoose from 'mongoose';
+import dummyData from './dummyData'
 import bodyParser from 'body-parser';
 import path from 'path';
 
@@ -22,7 +23,7 @@ mongoose.connect(serverConfig.mongoURL, (error) => {
   }
 
   // feed some dummy data in DB.
-  //dummyData();
+  dummyData();
 });
 
 // Apply body Parser and server public assets and routes

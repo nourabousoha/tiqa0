@@ -3,7 +3,7 @@ const uuidv4 = require('uuid/v4');
 import sanitizeHtml from 'sanitize-html';
 
 /**
- * Get all posts
+ * Get all devs
  * @param req
  * @param res
  * @returns void
@@ -24,18 +24,15 @@ export function getDevs(req, res) {
  * @returns void
  */
 export function addDev(req, res) {
-  if (!req.body.dev.name || !req.body.dev.email || !req.body.dev.desc) {
-    res.status(403).end();
-  }
-
-  const newDev = new Dev(req.body.post);
-
-  // Let's sanitize inputs
+  if (!req.body.name || !req.body.email || !req.body.desc) {
+     res.status(403).end();}
+    const newDev = new Dev({name:req.body.name,email:req.body.email,desc:req.body.desc,image:req.body.image,fees:req.body.fees});
+    // Let's sanitize inputs
   newDev.email = sanitizeHtml(newDev.email);
   newDev.name = sanitizeHtml(newDev.name);
   newDev.desc = sanitizeHtml(newDev.desc);
   newDev.fees = sanitizeHtml(newDev.fees);
-  newDev.status = sanitizeHtml(newDev.status);
+ // newDev.status = sanitizeHtml(newDev.status);
   newDev.image = sanitizeHtml(newDev.image);
   newDev.devid = uuidv4();
   newDev.save((err, saved) => {
@@ -43,11 +40,14 @@ export function addDev(req, res) {
       res.status(500).send(err);
     }
     res.json({ dev: saved });
+    
   });
+// res.json(newDev)
 }
 
+
 /**
- * Get a single post
+ * Get a single dev
  * @param req
  * @param res
  * @returns void
@@ -62,7 +62,7 @@ export function getDev(req, res) {
 }
 
 /**
- * Delete a post
+ * Delete a dev
  * @param req
  * @param res
  * @returns void
