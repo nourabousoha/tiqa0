@@ -11,7 +11,7 @@ router.route('/devs/:devid').get(DevController.getDev);
 // Add a new Dev
 //router.route('/devs').post(DevController.addDev);
 // register a new dev
-router.route('/devs').post(DevController.register);
+router.route('/devs/register').post(DevController.validateRegister,DevController.register);
 // Delete a dev by devid
 router.route('/devs/:devid').delete(DevController.deleteDev);
 

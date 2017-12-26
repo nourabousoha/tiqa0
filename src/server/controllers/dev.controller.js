@@ -23,11 +23,26 @@ export function getDevs(req, res) {
  * @param res
  * @returns void
  */
+export function validateRegister(req,res,next){
+req.checkBody('email','The email is not valid').isEmail()
+req.sanitizeBody('email')
+req.checkBody('password').notEmpty()
+req.checkBody('password-confirm','password and confir password dont match').equals(req.body.password)
+const errors = req.validationErrors()
+if(errors){
+  res.json({errors:{...errors.map(err=>err.msg)}})
+}
+next()
+}
 export  async function  register(req,res,next){
+  
   const developer = new Dev({ email: req.body.email })
   developer.devid = uuidv4();
+  // this part is handled with the passeport framework
   const register = promisify(Dev.register,Dev)
   await register(developer,req.body.password)
+ // and we save the new user
+
   developer.save((err, saved) => {
     if (err) {
       res.status(500).send(err);
@@ -35,7 +50,8 @@ export  async function  register(req,res,next){
     res.json({ dev: saved });
     
   });
-
+  
+ 
   }
 
 /**
