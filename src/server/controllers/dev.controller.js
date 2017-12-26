@@ -1,6 +1,7 @@
 import Dev from '../models/dev.model';
 const uuidv4 = require('uuid/v4');
 import sanitizeHtml from 'sanitize-html';
+import promisify from 'es6-promisify'
 
 /**
  * Get all devs
@@ -16,6 +17,26 @@ export function getDevs(req, res) {
     res.json({ devs });
   });
 }
+/**
+ * Register a dev
+ * @param req
+ * @param res
+ * @returns void
+ */
+export  async function  register(req,res,next){
+  const developer = new Dev({ email: req.body.email })
+  developer.devid = uuidv4();
+  const register = promisify(Dev.register,Dev)
+  await register(developer,req.body.password)
+  developer.save((err, saved) => {
+    if (err) {
+      res.status(500).send(err);
+    }
+    res.json({ dev: saved });
+    
+  });
+
+  }
 
 /**
  * Save a dev
