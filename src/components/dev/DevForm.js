@@ -16,7 +16,7 @@ class DevForm extends React.Component {
         e.preventDefault();
         console.log('Gonna a create somme dev')
        const dev ={
-           id:uuidv4(),
+           devid:uuidv4(),
            name:_name.value,
            desc:_desc.value,
            image:_photo.value,
