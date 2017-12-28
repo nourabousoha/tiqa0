@@ -2,7 +2,7 @@ import passport from 'passport'
 //import mongoose from 'mongoose'
 import Dev from '../models/dev.model'
 import { jwtOptions} from "../../server/config";
-import { Strategy as JWTStrategy, ExtractJwt } from "passport-jwt";
+import { Strategy as JWTStrategy} from "passport-jwt";
 //import JwtStrategy from 'passportJWT.Strategy'
 export function passportJwtInit(){
     

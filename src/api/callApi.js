@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch';
 //import Config from '../../server/config';
 
-export const API_URL = "http://localhost:8000/api"
+export const API_URL = "/api"
 export default function callApi(endpoint, method = 'get', body) {
   return fetch(`${API_URL}/${endpoint}`, {
     headers: { 'content-type': 'application/json' },

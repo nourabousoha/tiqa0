@@ -10,7 +10,7 @@ import {passportLocalInit,passportJwtInit} from './src/server/handlers/passport'
 import devs from './src/server/routes/dev.routes';
 import {config as serverConfig} from './src/server/config';
 import passport from 'passport'
-import Dev from './src/server/models/dev.model'
+
 // Initialize the Express App
 const app = new Express();
 //passportInit()
@@ -30,13 +30,13 @@ mongoose.connect(serverConfig.mongoURL, (error) => {
 
 // Apply body Parser and server public assets and routes
 // to solve cros problems
-app.use(function(req, res, next) {
+/*app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin","http://localhost:3000");
     res.header("Access-Control-Allow-Credentials", "true");
     res.header("Access-Control-Allow-Headers", "Origin,Content-Type, Authorization, x-id, Content-Length, X-Requested-With");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     next();
-});
+});*/
 app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
