@@ -1,3 +1,4 @@
+// Import required modules
 import Express from 'express';
 import compression from 'compression';
 import mongoose from 'mongoose';
@@ -5,14 +6,14 @@ import dummyData from './dummyData'
 import bodyParser from 'body-parser';
 import path from 'path';
 import expressValidator from 'express-validator'
-
+import {passportLocalInit,passportJwtInit} from './src/server/handlers/passport'
+import devs from './src/server/routes/dev.routes';
+import {config as serverConfig} from './src/server/config';
+import passport from 'passport'
+import Dev from './src/server/models/dev.model'
 // Initialize the Express App
 const app = new Express();
-// Import required modules
-import devs from './src/server/routes/dev.routes';
-//import dummyData from './dummyData';
-import serverConfig from './src/server/config';
-
+//passportInit()
 // Set native promises as mongoose promise
 mongoose.Promise = global.Promise;
 
@@ -40,6 +41,13 @@ app.use(compression());
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
 app.use(Express.static(path.resolve(__dirname, '../dist/client')));
+/////  passport initialization
+app.use(passport.initialize());
+passportLocalInit();
+passportJwtInit();
+
+/////////
+
 app.use(expressValidator());
 app.use('/api', devs);
 

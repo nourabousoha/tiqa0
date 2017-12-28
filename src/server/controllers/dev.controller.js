@@ -47,8 +47,8 @@ export  async function  register(req,res,next){
     if (err) {
       res.status(500).send(err);
     }
-    res.json({ dev: saved });
-    
+   // res.json({ dev: saved });
+   next()
   });
   
  
