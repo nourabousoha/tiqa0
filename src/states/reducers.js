@@ -53,9 +53,9 @@ function devs(state = [], action) {
         case ADD_DEV:
             return [...state,dev({},action)]
         case REMOVE_DEV:
-            return state.slice().filter(ele=>ele.id!==action.index)
+            return state.slice().filter(ele=>ele.devid!==action.index)
         case UPDATE_DEV:
-            return [...state.slice().filter(ele=>ele.id!==action.index),dev({},action)]
+            return [...state.slice().filter(ele=>ele.devid!==action.index),dev({},action)]
         case RECEIVE_DEVS:
             return action.devs
         case REQUEST_DEVS:

@@ -9,18 +9,19 @@ function DevEditRemove(props){
     const edit = props.edit
     const remove = props.remove 
    const  val = props.val
+   
     return (
         <div className="row col-md-6">
         <div className="form-inline  ">
 
             <div className="input-group col-md-1 dev-edit-remove-button">
-                <a className="form-control btn btn-danger devbutton " type="submit" onClick={remove}><i className="fa fa-trash-o" aria-hidden="true">&nbsp;</i>
+                <a className="form-control btn btn-danger devbutton " type="submit" onClick={remove}><i className="fa fa-trash-o" aria-hdevidden="true">&nbsp;</i>
                     </a>
 
             </div>
             <div className="input-group col-md-1 col-md-offset-1">
                 <a className="form-control btn btn-success dev-edit-remove-button" type="submit" onClick={edit}
-                    key={val.id}><i className="fa fa-pencil-square-o" aria-hidden="true">&nbsp;</i>
+                    key={val.devid}><i className="fa fa-pencil-square-o" aria-hdevidden="true">&nbsp;</i>
                     </a>
 
 </div>
@@ -84,20 +85,20 @@ class Dev extends React.Component {
            }
     edit(e){
         e.preventDefault();
-        const id = this.val.id
+        const devid = this.val.devid
        // const { name, desc,photo,password,status } = this.val
-        this.props.toggleEditDev(id)
+        this.props.toggleEditDev(devid)
         const { _name, _desc,_photo,_password,_status,_devform } = this.refs
              console.log('Gonna a edit this dev'+ _name)
     }
     remove(e) {
         e.preventDefault();
-        const id = this.val.id
+        const devid = this.val.devid
         console.log('Gonna a remove this dev')
-        this.props.removeDev(id)
+        this.props.removeDev(devid)
     }
     renderDevOrEditField() {
-       if (this.props.toggleEdit ===this.val.id) {
+       if (this.props.toggleEdit ===this.val.devid) {
             // handle  edit fields here
            return <EditDEv val={this.val} cancel={this.cancel} updateDev={this.updateDev}/>
 
@@ -130,11 +131,11 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        removeDev: id => {
-            dispatch(removeDev(id))
+        removeDev: devid => {
+            dispatch(removeDev(devid))
         },
-        toggleEditDev:id => {
-            dispatch(toggleEditDev(id))
+        toggleEditDev:devid => {
+            dispatch(toggleEditDev(devid))
         }
     }
 }

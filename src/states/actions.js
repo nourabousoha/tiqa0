@@ -1,4 +1,6 @@
 import base  from '../api/base';
+import callApi from '../api/callApi';
+
 const devsRef = base.database().ref('devs');
 /*
  * action types
@@ -14,6 +16,15 @@ export const TOGGLE_ADD_DEV = 'TOGGLE_ADD_DEV';
 export const TOGGLE_EDIT_DEV = 'TOGGLE_EDIT_DEV';
 
 // Export Actions
+
+export function fetchDevs() {
+  return (dispatch) => {
+    return callApi('devs').then(res => {
+      dispatch(receiveDevs(res.devs));
+    });
+  };
+}
+
 export function toggleAddDev() {
   return {
     type: TOGGLE_ADD_DEV,
